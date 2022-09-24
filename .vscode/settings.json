@@ -1,0 +1,10 @@
+{
+  "files.associations": {
+    "spi.h": "c",
+    "nokia_5110_lcd.h": "c",
+    "compare": "c",
+    "gpio.h": "c",
+    "system_timer.h": "c",
+    "uart.h": "c"
+  }
+}
