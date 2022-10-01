@@ -69,9 +69,8 @@
 #define GPIO_CRH_MODE13_2                      ((uint32_t)0x00000000)
 #define GPIO_CRH_MODE14_2                      ((uint32_t)0x00000000)
 #define GPIO_CRH_MODE15_2                      ((uint32_t)0x00000000)
-/*-------------------------------------------------------------------------------------------------------*/
-/*This is the section for GPIO initial configuration*/
 
+/*-------------------------------------------------------------------------------------------------------*/
 /*List declaration*/
 #define PINLIST_C(ENTRYLIST) \
         /*GPIO_PORT, pin, Control_Register, bit_value, OUTPUT, Speed_bit_value*/\
@@ -101,94 +100,15 @@
         ENTRY_FUNCTION(GPIOA, AHB1, APB2, RCC_APB2ENR_IOPAEN, PINLIST_A) \
 
 
-#define PIN_CONFIGURE(GPIO_PORT, pin, Control_Register, bit_value, function, Speed_bit_value) \
-        /*Configure pin's function in the register*/\
-        /*pin: 0,...15*/\
-        /*bit_value: pin, pin_0, pin_1, by default: pin_0, which is the reset value of the register*/\
-        /*Speed_bit_value: pin, pin_0, pin_1: by default: pin_2, which is the reset value of the register*/\
-        /*Reset bit_value*/\
-        (GPIO_PORT##->##Control_Register) &=  ~(GPIO_##Control_Register##_CNF##pin);\
-        (GPIO_PORT##->##Control_Register) |=  (GPIO_##Control_Register##_CNF##bit_value);\
-        /*Reset speed_bit_value*/\
-        (GPIO_PORT##->##Control_Register) &=  ~(GPIO_##Control_Register##_MODE##pin);\
-        (GPIO_PORT##->##Control_Register) |=  (GPIO_##Control_Register##_MODE##Speed_bit_value);\
-				/*For Input mode, If that pin is configured as pull up/down mode, by default it is pull-down mode*/\
-
-
-#define GPIO_Configuration(GPIO_PORT, AHB_bus, APB_bus, APB_bus_bit_pos, pin_list) \
-        /*Procedure: 1. Clock enable for AHB, 2. Clock enable for each port, 3. Pin configuration*/\
-        static void GPIO_configure_##GPIO_PORT(void){\
-            /*Configure its APB_bus*/\
-            RCC->APB_bus##ENR |= APB_bus_bit_pos;  \
-            /*Configure its Output Pin*/\
-            pin_list(PIN_CONFIGURE) \
-        }\
-
-
-#define GPIO_Configure_FuncCall(GPIO_PORT, NA1, NA2, NA3, NA4) \
-        GPIO_configure_##GPIO_PORT();\
-\
-
 #define GPIO_Configure_DELC(GPIO_PORT, NA1, NA2, NA3, NA4) \
         static void GPIO_configure_##GPIO_PORT(void);\
-\
-
-/*-------------------------------------------------------------------------------------------------------*/
-/*This is the section for External Interrupt configuration
-  The concept of External Interrupt:
-    A_pinx/B_pinx/C_pinx/... are connected to the same interrupt signal line x
-    Hence once a pin number x from a port is configured, pin from other ports with the same number x cannot be configured as
-    external interrupt
-    To configure External Interrupt: 
-    - Configure GPIO pin as AF function
-    - Configure that AF function
-    - Interrupt declaration in the interrupt mask
-    - Interrupt signal type
-    - Callback function
-*/
-#define EXTI_YES
-
-#define GPIO_EX_Interrupt_configuration(GPIO_PORT, INTERRUPT_register, pin, edge_detection, priority, callbackfunction) \
-  static void EX_Interrupt_configurtation_##GPIO_PORT(void){\
-        /*GPIO_PORT = A, B, C,D; pin = 1, 2,3 ,4...; INTERRUPT_register = 1, 2, 3, 4*/\
-        /*edge_detection: 0 = rising, 1 = falling, 2 = both*/\
-        /* Configure AF function as interrupt*/\
-        AFIO->EXTICR[pin] |= AFIO_EXTICR##INTERRUPT_register##_EXTI##pin##_P##GPIO_PORT;\
-        /*Configure EXTI_IMR: Unmask the required External Interrupt line*/\
-        EXTI->IMR |= EXTI_IMR_MR##pin;\
-        /*Configure trigger EXTI signal: rising/falling edge*/\
-        if(edge_detection == 0){\
-          EXTI->RTSR |= EXTI_RTSR_TR##pin;\
-        }\
-        else if(edge_detection == 1){\
-          EXTI->FTSR |= EXTI_FTSR_TR##pin;\
-        }\
-        else{\
-          EXTI->FTSR |= EXTI_FTSR_TR##pin;\
-          EXTI->RTSR |= EXTI_RTSR_TR##pin;\
-        }\
-        /*Register the interrupt with NVIC in CPU*/\
-        NVIC_EnableIRQ(EXTI##pin##_IRQn);\
-  }\
-
-#define GPIO_EX_Interrupt_DELC(GPIO_PORT, NA1, NA2, NA3, NA4, NA5) \
-  static void EX_Interrupt_configurtation_##GPIO_PORT(void);\
-
-#define GPIO_EX_Interrupt_FUNC_Call(GPIO_PORT, NA1, NA2, NA3, NA4, NA5) \
-        EX_Interrupt_configurtation_##GPIO_PORT();
-
-/*External Interrupt list declaration*/
-#define EXTI_LIST_CONFIGURE(ENTRY_FUNC) \
-        ENTRY_FUNC(A, 1, 0, 0, NA, NA2)
 
 extern uint8_t signal;
-/*Functions declaration*/
+
 
 /*Macro calls*/
 GPIO_LIST_CONFIGURE(GPIO_Configure_DELC)
-EXTI_LIST_CONFIGURE(GPIO_EX_Interrupt_DELC)
 
-void GPIO_EXInterrupt(void);
 void GPIO_Initialization(void);
 uint8_t GPIO_ReadPin(GPIO_TypeDef* GPIO_Port, uint8_t pin_pos_u8);
 void GPIO_WritePin(GPIO_TypeDef* GPIO_Port, uint8_t pin_pos_u8, uint8_t value_u8);
