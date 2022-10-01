@@ -52,6 +52,7 @@ extern uint8_t transmit_cplt_b;
         ENTRYLIST(GPIOA, 7, CRL, 7, OUPUT, 7) \
         /*Output: Push-pull, maxspeed*/\
         ENTRYLIST(GPIOA, 3, CRL, 3_2,OUTPUT, 3) \
+        ENTRYLIST(GPIOA, 4, CRL, 4_2,OUTPUT, 4) \
         ENTRYLIST(GPIOA, 2, CRL, 2_2,OUTPUT, 2) \
 
 #define PORT_LIST(ENTRYLIST) \

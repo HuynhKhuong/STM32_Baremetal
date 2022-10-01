@@ -31,19 +31,20 @@ int main() {
   uint8_t inputpin_u8 = 0; 
 	uint8_t output_state = 0;
 	/*Users's Application initialization*/
-  NOKIA_Init(my_NOKIA_5110);
+	GPIO_WritePin(GPIOC, 13, 1);
+  //NOKIA_Init(my_NOKIA_5110);
 	
 	while(1){
-    //inputpin_u8 = GPIO_ReadPin(GPIOA, (uint8_t)0);
-		Delay_ms_tick(1000);
-		//UART_Transmitt(USART1, &DUMMY_TRANSMIT[0], 11);
-		output_state = (output_state == 0)?1:0;
-    //if(inputpin_u8 == 1){
-        GPIO_WritePin(GPIOC, 13, output_state);
-    //}
-    //else {
-        //GPIO_WritePin(GPIOC, 13, output_state);
-    //}
+//    //inputpin_u8 = GPIO_ReadPin(GPIOA, (uint8_t)0);
+//		Delay_ms_tick(1000);
+//		//UART_Transmitt(USART1, &DUMMY_TRANSMIT[0], 11);
+//		output_state = (output_state == 0)?1:0;
+//    //if(inputpin_u8 == 1){
+//        GPIO_WritePin(GPIOC, 13, output_state);
+//    //}
+//    //else {
+//        //GPIO_WritePin(GPIOC, 13, output_state);
+//    //}
   }
   return 0;
 }

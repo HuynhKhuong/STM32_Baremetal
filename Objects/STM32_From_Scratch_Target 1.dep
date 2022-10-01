@@ -1,5 +1,5 @@
 Dependencies for Project 'STM32_From_Scratch', Target 'Target 1': (DO NOT MODIFY !)
-F (.\Users\Src\main.c)(0x632F0538)(--c99 --gnu -c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork --split_sections -I .\Users\Inc -I ".\User-defined lib"-I.\RTE\Device\STM32F103C8-I.\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F10X_MD-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+F (.\Users\Src\main.c)(0x632F2698)(--c99 --gnu -c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork --split_sections -I .\Users\Inc -I ".\User-defined lib"-I.\RTE\Device\STM32F103C8-I.\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F10X_MD-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
 I (.\Users\Inc\main.h)(0x6311EC2A)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.4.0\Device\Include\stm32f10x.h)(0x6326F734)
 I (.\RTE\_Target_1\RTE_Components.h)(0x6310A119)
@@ -12,7 +12,7 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.4.0\Device\Include\system_stm32f10x.
 I (.\Users\Inc\GPIO.h)(0x632892A4)
 I (.\Users\Inc\system_timer.h)(0x631A00EC)
 I (.\Users\Inc\UART.h)(0x6325B303)
-I (.\User-defined lib\Nokia_5110_LCD.h)(0x632F0331)
+I (.\User-defined lib\Nokia_5110_LCD.h)(0x632F21FC)
 I (.\Users\Inc\SPI.h)(0x632F00E2)
 F (.\Users\Src\GPIO.c)(0x63148785)(--c99 --gnu -c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork --split_sections -I .\Users\Inc -I ".\User-defined lib"-I.\RTE\Device\STM32F103C8-I.\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F10X_MD-o .\objects\gpio.o --omf_browse .\objects\gpio.crf --depend .\objects\gpio.d)
 I (.\Users\Inc\GPIO.h)(0x632892A4)
@@ -56,11 +56,11 @@ I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_version.h)(0x5A55A3F2
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_compiler.h)(0x5A8E2DF2)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_armcc.h)(0x5A8E2DF2)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.4.0\Device\Include\system_stm32f10x.h)(0x61AD876E)
-I (.\User-defined lib\Nokia_5110_LCD.h)(0x632F0331)
+I (.\User-defined lib\Nokia_5110_LCD.h)(0x632F21FC)
 I (.\Users\Inc\GPIO.h)(0x632892A4)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599EDB3C)
-F (.\User-defined lib\Nokia_5110_LCD.c)(0x632F0E99)(--c99 --gnu -c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork --split_sections -I .\Users\Inc -I ".\User-defined lib"-I.\RTE\Device\STM32F103C8-I.\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F10X_MD-o .\objects\nokia_5110_lcd.o --omf_browse .\objects\nokia_5110_lcd.crf --depend .\objects\nokia_5110_lcd.d)
-I (User-defined lib\Nokia_5110_LCD.h)(0x632F0331)
+F (.\User-defined lib\Nokia_5110_LCD.c)(0x632F2465)(--c99 --gnu -c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork --split_sections -I .\Users\Inc -I ".\User-defined lib"-I.\RTE\Device\STM32F103C8-I.\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F10X_MD-o .\objects\nokia_5110_lcd.o --omf_browse .\objects\nokia_5110_lcd.crf --depend .\objects\nokia_5110_lcd.d)
+I (User-defined lib\Nokia_5110_LCD.h)(0x632F21FC)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.4.0\Device\Include\stm32f10x.h)(0x6326F734)
 I (.\RTE\_Target_1\RTE_Components.h)(0x6310A119)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\core_cm3.h)(0x5A8E2DF2)

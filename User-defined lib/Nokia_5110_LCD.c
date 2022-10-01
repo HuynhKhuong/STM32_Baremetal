@@ -14,7 +14,8 @@ NOKIA_5110* NOKIA_5110_ctor(uint8_t V_operation, uint8_t bias_config){
 
     COMM_LIST(SPI_configuration_funcall)
     PORT_LIST(GPIO_Configure_FuncCall)
-    
+
+    //GPIO_WritePin(GPIOA, GPIO_PIN_2, 1); 
     NOKIA_5110* temp_pointer = malloc(sizeof(NOKIA_5110));
     LCD_position_orientation* LCD_temp_pointer = malloc(sizeof(LCD_position_orientation));
 
