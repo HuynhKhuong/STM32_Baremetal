@@ -5,3 +5,8 @@ layers:
 3. Data & Command abstraction (via enums, macros, structs)
 4. Interrupt handling (bare metal)
 5. Low-layer configuration (bare metal) 
+
+
+A struct for a peripheral: PORT, function pointer,.....
+-> Layers would take infor from struct 
+struct between layers communicate with each other via index
