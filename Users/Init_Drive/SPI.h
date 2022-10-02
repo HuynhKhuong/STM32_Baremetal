@@ -62,25 +62,25 @@ typedef struct{
       /*Common configuration for both sides: Transmitting and Receiving*/\
       uint16_t baudrate_bit_mapping_u8 = ~(SPI_CR1_BR_0 | SPI_CR1_BR_1|SPI_CR1_BR_2);\
       uint8_t baudrate_val_u8 = BAUDRATE_DIV_FACTOR << 3;\
-      SPI_BLOCK##->CR1 &= baudrate_bit_mapping_u8;\
-      SPI_BLOCK##->CR1 |= baudrate_val_u8;\
+      (SPI_BLOCK)->CR1 &= baudrate_bit_mapping_u8;\
+      (SPI_BLOCK)->CR1 |= baudrate_val_u8;\
       /*Data frame: 8-bit length, MSB 1st*/\
-      SPI_BLOCK##->CR1 |= SPI_CR1_DFF;\
-      SPI_BLOCK##->CR1 &= ~(SPI_CR1_LSBFIRST);\
+      (SPI_BLOCK)->CR1 |= SPI_CR1_DFF;\
+      (SPI_BLOCK)->CR1 &= ~(SPI_CR1_LSBFIRST);\
       /*configure NSS pin: Software mode*/\
       /*Software mode: SSI bit, It drives the SS signal regardless regardless NSS_pin present I/O value*/\
       /*Hardware mode: is driven using SSOE */\
-      SPI_BLOCK##->CR1 |= SPI_CR1_SSM;\
-      SPI_BLOCK##->CR1 |= SPI_CR1_SSI;\
+      (SPI_BLOCK)->CR1 |= SPI_CR1_SSM;\
+      (SPI_BLOCK)->CR1 |= SPI_CR1_SSI;\
       /*Clock Phase, Polarity Configuration*/\
       if(CLOCK_PHASE == 1){\
-        SPI_BLOCK##->CR1 |= SPI_CR1_CPHA;\
+        (SPI_BLOCK)->CR1 |= SPI_CR1_CPHA;\
       }\
       if(CLOCK_POLARITY == 1){\
-        SPI_BLOCK##->CR1 |= SPI_CR1_CPOL;\
+        (SPI_BLOCK)->CR1 |= SPI_CR1_CPOL;\
       }\
       /*Enable SPI in master mode*/\
-      SPI_BLOCK##->CR1 |= SPI_CR1_MSTR;\
+      (SPI_BLOCK)->CR1 |= SPI_CR1_MSTR;\
       /*Enable SPI's interrupt mechanism*/\
       __set_PRIMASK(1);\
       NVIC_EnableIRQ(SPI_BLOCK##_IRQ);\

@@ -1,0 +1,7 @@
+layers:
+
+1. Application using abstract functions
+2. Abstract functions for peripherals manipulation
+3. Data & Command abstraction (via enums, macros, structs)
+4. Interrupt handling (bare metal)
+5. Low-layer configuration (bare metal) 

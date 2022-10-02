@@ -103,6 +103,9 @@
 #define GPIO_Configure_DELC(GPIO_PORT, NA1, NA2, NA3, NA4) \
         static void GPIO_configure_##GPIO_PORT(void);\
 
+#define GPIO_Configure_FuncCall(GPIO_PORT, NA1, NA2, NA3, NA4) \
+        GPIO_configure_##GPIO_PORT();\
+				
 extern uint8_t signal;
 
 

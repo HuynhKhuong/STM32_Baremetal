@@ -1,5 +1,5 @@
-.\objects\system_timer.o: Users\Src\system_timer.c
-.\objects\system_timer.o: .\Users\Inc\system_timer.h
+.\objects\system_timer.o: Users\Init_Drive\system_timer.c
+.\objects\system_timer.o: Users\Init_Drive\system_timer.h
 .\objects\system_timer.o: C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.4.0\Device\Include\stm32f10x.h
 .\objects\system_timer.o: .\RTE\_Target_1\RTE_Components.h
 .\objects\system_timer.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\core_cm3.h

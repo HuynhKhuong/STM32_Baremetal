@@ -5,9 +5,37 @@
 
 //Flag value initialization
 uint8_t transmit_cplt_b = 0;
+
+
+#define PIN_CONFIGURE(GPIO_PORT, pin, Control_Register, bit_value, function, Speed_bit_value) \
+        /*Configure pin's function in the register*/\
+        /*pin: 0,...15*/\
+        /*bit_value: pin, pin_0, pin_1, by default: pin_0, which is the reset value of the register*/\
+        /*Speed_bit_value: pin, pin_0, pin_1: by default: pin_2, which is the reset value of the register*/\
+        /*Reset bit_value*/\
+        ((GPIO_PORT)->Control_Register) &=  ~(GPIO_##Control_Register##_CNF##pin);\
+        ((GPIO_PORT)->Control_Register) |=  (GPIO_##Control_Register##_CNF##bit_value);\
+        /*Reset speed_bit_value*/\
+        ((GPIO_PORT)->Control_Register) &=  ~(GPIO_##Control_Register##_MODE##pin);\
+        ((GPIO_PORT)->Control_Register) |=  (GPIO_##Control_Register##_MODE##Speed_bit_value);\
+				/*For Input mode, If that pin is configured as pull up/down mode, by default it is pull-down mode*/
+
+
+#define GPIO_Configuration(GPIO_PORT, AHB_bus, APB_bus, APB_bus_bit_pos, pin_list) \
+        /*Procedure: 1. Clock enable for AHB, 2. Clock enable for each port, 3. Pin configuration*/\
+        static void GPIO_configure_##GPIO_PORT(void){\
+            /*Configure its APB_bus*/\
+            RCC->APB_bus##ENR |= APB_bus_bit_pos;  \
+            /*Configure its Output Pin*/\
+            pin_list(PIN_CONFIGURE) \
+        }
+
+
+
 //Low layer peripherals initialization
 COMM_LIST(SPI_configuration)
-PORT_LIST(GPIO_Configuration)
+//PORT_LIST()
+GPIO_Configuration(GPIOA, AHB1, APB2, RCC_APB2ENR_IOPAEN, COMM_PIN_LIST)			
 
 NOKIA_5110* NOKIA_5110_ctor(uint8_t V_operation, uint8_t bias_config){
     //LL configuration

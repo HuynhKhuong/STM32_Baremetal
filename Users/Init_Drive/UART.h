@@ -59,14 +59,14 @@ typedef struct{
             RCC->##CLOCK_REG##ENR |= RCC_##CLOCK_REG##ENR_##UART##EN;\
             /*Note that its clock speed source is AHB clock speed, which is extracted from System clock speed*/\
             /*2. Enable USART communication*/\
-            UART##->CR1 |= USART_CR1_UE; \
+            (UART)->CR1 |= USART_CR1_UE; \
             /*3. Define word length*/\
             /*By default, word length is 0, if you want to configure word length to 1, set flag WORD_L*/\
             if(WORD_L == 1){\
-            UART##->CR1 |= USART_CR1_M;\
+            (UART)->CR1 |= USART_CR1_M;\
             }\
             /*4. select number of stop bit*/\
-            UART##->CR2 |= USART_CR2_STOP_##STOP_BIT;\
+            (UART)->CR2 |= USART_CR2_STOP_##STOP_BIT;\
             /*5. Set baudrate*/\
             /*BRR clock speed is taken from bus clock speed APB2*/\
             /*By default clock speed APB2 = 72MHz*/\
@@ -75,7 +75,7 @@ typedef struct{
             mantisa_part_u32 = (uint32_t)39;\
             fractional_part_u32 = (uint32_t)(0.625*16);\
             brr_result_u32 = ((mantisa_part_u32 << 4)|(fractional_part_u32)) & 0x0000FFFF;\
-            UART##->BRR |= brr_result_u32;\
+            (UART)->BRR |= brr_result_u32;\
             /*7. Add interrupt request to NVIC*/\
             __set_PRIMASK(1);\
             NVIC_EnableIRQ(UART##_IRQ);\
@@ -91,15 +91,15 @@ typedef struct{
     if( last_byte_u8 == UART##_data_container_str.transmitt_buffer_index){                                              \
         /*last byte, reset TXE interrupt*/                                                                              \
         /*set TC interrupt*/                                                                                            \
-        UART##->CR1 &= ~(USART_CR1_TXEIE);                                                                              \
-        UART##->CR1 |= USART_CR1_TCIE;                                                                                  \
+        (UART)->CR1 &= ~(USART_CR1_TXEIE);                                                                              \
+        (UART)->CR1 |= USART_CR1_TCIE;                                                                                  \
     }                                                                                                                   \
-    UART##->DR =  UART##_data_container_str.transmitt_buffer[UART##_data_container_str.transmitt_buffer_index];         \
+    (UART)->DR =  UART##_data_container_str.transmitt_buffer[UART##_data_container_str.transmitt_buffer_index];         \
     UART##_data_container_str.transmitt_buffer_index++;                                                                                   \
     }\
 \
     static void UART##_RXE_interrupt(void){                                                                              \
-    UART##_data_container_str.receive_buffer[UART##_data_container_str.receive_buffer_index] = UART##->DR;              \
+    UART##_data_container_str.receive_buffer[UART##_data_container_str.receive_buffer_index] = (UART)->DR;              \
     UART##_data_container_str.receive_buffer_index++;                                                                   \
 \
     if(UART##_data_container_str.receive_buffer_index == UART##_data_container_str.receive_buffer_length){              \
@@ -112,13 +112,13 @@ typedef struct{
     uint8_t is_TC_interrupt_u8;                                                                                         \
     uint8_t is_RXNE_interrupt_u8;                                                                                       \
 \
-    is_TXE_interrupt_u8 = (UART##->CR1 & USART_CR1_TXEIE) >> 7; /*7 is TXE bit position*/                               \
-    is_TXE_interrupt_u8 &= (UART##->SR & USART_SR_TXE) >> 7; /*7 is the TXE bit position*/                              \
+    is_TXE_interrupt_u8 = ((UART)->CR1 & USART_CR1_TXEIE) >> 7; /*7 is TXE bit position*/                               \
+    is_TXE_interrupt_u8 &= ((UART)->SR & USART_SR_TXE) >> 7; /*7 is the TXE bit position*/                              \
 \
-    is_TC_interrupt_u8 = (UART##->CR1 & USART_CR1_TCIE) >> 6; /*6 is TC bit position*/                                  \
-    is_TC_interrupt_u8 &= (UART##->SR & USART_SR_TC) >> 6; /*6 is TC bit positio*/                                      \
+    is_TC_interrupt_u8 = ((UART)->CR1 & USART_CR1_TCIE) >> 6; /*6 is TC bit position*/                                  \
+    is_TC_interrupt_u8 &= ((UART)->SR & USART_SR_TC) >> 6; /*6 is TC bit positio*/                                      \
 \
-    is_RXNE_interrupt_u8 = (UART##->SR & USART_SR_RXNE) >> 5; /*5 is the RXNE bit position*/                            \
+    is_RXNE_interrupt_u8 = ((UART)->SR & USART_SR_RXNE) >> 5; /*5 is the RXNE bit position*/                            \
     \
     if(is_TXE_interrupt_u8){                                                                                            \
         UART##_TXE_interrupt();                                                                                         \

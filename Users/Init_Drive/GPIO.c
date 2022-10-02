@@ -26,11 +26,11 @@ const uint32_t pin_lookup_tbl[32] ={
         /*bit_value: pin, pin_0, pin_1, by default: pin_0, which is the reset value of the register*/\
         /*Speed_bit_value: pin, pin_0, pin_1: by default: pin_2, which is the reset value of the register*/\
         /*Reset bit_value*/\
-        (GPIO_PORT##->##Control_Register) &=  ~(GPIO_##Control_Register##_CNF##pin);\
-        (GPIO_PORT##->##Control_Register) |=  (GPIO_##Control_Register##_CNF##bit_value);\
+        ((GPIO_PORT)->Control_Register) &=  ~(GPIO_##Control_Register##_CNF##pin);\
+        ((GPIO_PORT)->Control_Register) |=  (GPIO_##Control_Register##_CNF##bit_value);\
         /*Reset speed_bit_value*/\
-        (GPIO_PORT##->##Control_Register) &=  ~(GPIO_##Control_Register##_MODE##pin);\
-        (GPIO_PORT##->##Control_Register) |=  (GPIO_##Control_Register##_MODE##Speed_bit_value);\
+        ((GPIO_PORT)->Control_Register) &=  ~(GPIO_##Control_Register##_MODE##pin);\
+        ((GPIO_PORT)->Control_Register) |=  (GPIO_##Control_Register##_MODE##Speed_bit_value);\
 				/*For Input mode, If that pin is configured as pull up/down mode, by default it is pull-down mode*/\
 
 
@@ -45,8 +45,7 @@ const uint32_t pin_lookup_tbl[32] ={
 
 
 
-#define GPIO_Configure_FuncCall(GPIO_PORT, NA1, NA2, NA3, NA4) \
-        GPIO_configure_##GPIO_PORT();\
+
 
 
 uint8_t signal = 0;
