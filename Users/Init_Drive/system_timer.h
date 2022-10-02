@@ -45,10 +45,6 @@
 /* Function declaration */
 
 void Systick_Initialization(uint32_t reload_val_u32);
-void Delay_ms_tick(uint32_t num_of_ms_u32);
-
-//This function should not be visible as using it carelessly would make system vulnerable
-static void set_Systick(uint32_t set_val_u32);
 
 
 #endif
