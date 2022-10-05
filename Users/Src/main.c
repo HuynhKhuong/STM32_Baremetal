@@ -3,13 +3,13 @@
 #include "GPIO.h"
 #include "system_timer.h"
 #include "UART.h"
-#include "Nokia_5110_LCD.h"
+//#include "Nokia_5110_LCD.h"
 /* Users's private macros */
 
 /* Users's private variable*/
 uint8_t DUMMY_TRANSMIT[11] = {'H','E','L','L','O',' ','W','O','R','L','D'};
 uint8_t DUMMY_RECEIVE[11] = {0,0,0,0,0,0,0,0,0,0,0};
-NOKIA_5110* my_NOKIA_5110;
+//NOKIA_5110* my_NOKIA_5110;
 /* Function declarations*/
 
 /*Main function*/
@@ -22,7 +22,7 @@ int main() {
   /*Hardware configuration */
   GPIO_Initialization();
 	Systick_Initialization(0);
-	my_NOKIA_5110 = NOKIA_5110_ctor(0x3F, BIAS_SYSTEM_CONF);
+	//my_NOKIA_5110 = NOKIA_5110_ctor(0x3F, BIAS_SYSTEM_CONF);
 	
 	//UART_init();
 	//UART_Receive(USART1, &DUMMY_RECEIVE[0], 11);
@@ -31,7 +31,7 @@ int main() {
   uint8_t inputpin_u8 = 0; 
 	uint8_t output_state = 0;
 	/*Users's Application initialization*/
-	GPIO_WritePin(GPIOC, 13, 1);
+	//GPIO_WritePin(GPIOC, 13, 1);
   //NOKIA_Init(my_NOKIA_5110);
 	
 	while(1){

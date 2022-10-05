@@ -47,7 +47,5 @@ extern uint8_t signal;
 GPIO_LIST_CONFIGURE(GPIO_Configure_DELC)
 
 void GPIO_Initialization(void);
-uint8_t GPIO_ReadPin(GPIO_TypeDef* GPIO_Port, uint8_t pin_pos_u8);
-void GPIO_WritePin(GPIO_TypeDef* GPIO_Port, uint8_t pin_pos_u8, uint8_t value_u8);
 
 #endif

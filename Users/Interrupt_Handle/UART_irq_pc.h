@@ -26,4 +26,6 @@ extern UART_data_buffer USART4_data_container_str;
     void UART##_cplt_Transmitt(void);\
     void UART##_cplt_Receive(void);\
 
+UART_LIST_CONFIGURE(USERS_IRQ_HANDLE_DECL)
+
 #endif 

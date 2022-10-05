@@ -22,11 +22,23 @@ Dialog DLL:      TCM.DLL V1.35.1.0
  
 <h2>Project:</h2>
 D:\Keil_v5\Projects\STM32_From_Scratch\STM32_From_Scratch.uvprojx
-Project File Date:  10/01/2022
+Project File Date:  10/05/2022
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
-Build target 'Target 1'
+Rebuild target 'Target 1'
+compiling system_timer.c...
+compiling sys_tick_serv.c...
+Users\Service\sys_tick_serv.c(10): warning:  #177-D: function "set_Systick"  was declared but never referenced
+  static void set_Systick(uint32_t set_val_u32){
+Users\Service\sys_tick_serv.c(6): warning:  #177-D: function "get_Systick"  was declared but never referenced
+  static uint32_t get_Systick(void){
+Users\Service\sys_tick_serv.c: 2 warnings, 0 errors
+compiling UART.c...
+Users\Init_Drive\UART.c(45): warning:  #2795-D: concatenation with "APB2ENR" in macro "UART_Configuration"  does not create a valid token
+  UART_LIST_CONFIGURE(UART_Configuration)
+Users\Init_Drive\UART.c: 1 warning, 0 errors
+compiling UART_serv.c...
 compiling main.c...
 Users\Src\main.c(49): warning:  #111-D: statement is unreachable
     return 0;
@@ -35,19 +47,19 @@ Users\Src\main.c(31): warning:  #177-D: variable "inputpin_u8"  was declared but
 Users\Src\main.c(32): warning:  #177-D: variable "output_state"  was declared but never referenced
   	uint8_t output_state = 0;
 Users\Src\main.c: 3 warnings, 0 errors
-compiling UART.c...
-Users\Init_Drive\UART.c(14): warning:  #2795-D: concatenation with "APB2ENR" in macro "UART_Configuration"  does not create a valid token
-  UART_LIST_CONFIGURE(UART_Configuration)
-Users\Init_Drive\UART.c(9): warning:  #177-D: variable "USART2_data_container_str"  was declared but never referenced
-  static UART_data_buffer USART2_data_container_str = {NULL, NULL, 0,0,0,0}; 
-Users\Init_Drive\UART.c(10): warning:  #177-D: variable "USART3_data_container_str"  was declared but never referenced
-  static UART_data_buffer USART3_data_container_str = {NULL, NULL, 0,0,0,0}; 
-Users\Init_Drive\UART.c(11): warning:  #177-D: variable "USART4_data_container_str"  was declared but never referenced
-  static UART_data_buffer USART4_data_container_str = {NULL, NULL, 0,0,0,0}; 
-Users\Init_Drive\UART.c: 4 warnings, 0 errors
+compiling GPIO.c...
+compiling GPIO_ctrl.c...
+assembling startup_stm32f10x_md.s...
+compiling GPIO_irq.c...
+compiling GPIO_def.c...
+compiling GPIO_irq_pc.c...
+compiling sys_tick_irq.c...
+compiling UART_irq_pc.c...
+compiling UART_irq.c...
+compiling system_stm32f10x.c...
 linking...
-Program Size: Code=2756 RO-data=396 RW-data=24 ZI-data=1720  
-".\Objects\STM32_From_Scratch.axf" - 0 Error(s), 7 Warning(s).
+Program Size: Code=1432 RO-data=268 RW-data=8 ZI-data=1680  
+".\Objects\STM32_From_Scratch.axf" - 0 Error(s), 6 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -75,10 +87,10 @@ Package Vendor: Keil
 
    * Component: Keil::Device:Startup:1.0.0
       Include file:  RTE_Driver\Config\RTE_Device.h
+      Source file:   Device\Source\ARM\STM32F1xx_OPT.s
       Source file:   Device\Source\system_stm32f10x.c
       Source file:   Device\Source\ARM\startup_stm32f10x_md.s
-      Source file:   Device\Source\ARM\STM32F1xx_OPT.s
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>

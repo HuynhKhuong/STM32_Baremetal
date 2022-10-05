@@ -22,10 +22,10 @@ uint8_t GPIO_ReadPin(GPIO_TypeDef* GPIO_Port, uint8_t pin_pos_u8){
 void GPIO_WritePin(GPIO_TypeDef* GPIO_Port, uint8_t pin_pos_u8, uint8_t value_u8){
     uint8_t reset_pos_u8 = pin_pos_u8 + 16;
     if(value_u8 == 1){ //set bit Output to 1
-      GPOutput_set_value(GPIO_Port->BSRR, pin_lookup_tbl[pin_pos_u8]);
+      GPOutput_set_value(GPIO_Port->BSRR, bit_position_val_tbl[pin_pos_u8]);
     }
     else { //set bit Output to 0
-      GPOutput_set_value(GPIO_Port->BSRR, pin_lookup_tbl[reset_pos_u8]);
+      GPOutput_set_value(GPIO_Port->BSRR, bit_position_val_tbl[reset_pos_u8]);
     }
 }
 

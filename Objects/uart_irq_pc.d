@@ -1,0 +1,14 @@
+.\objects\uart_irq_pc.o: Users\Interrupt_Handle\UART_irq_pc.c
+.\objects\uart_irq_pc.o: Users\Interrupt_Handle\UART_irq_pc.h
+.\objects\uart_irq_pc.o: C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.4.0\Device\Include\stm32f10x.h
+.\objects\uart_irq_pc.o: .\RTE\_Target_1\RTE_Components.h
+.\objects\uart_irq_pc.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\core_cm3.h
+.\objects\uart_irq_pc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\uart_irq_pc.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_version.h
+.\objects\uart_irq_pc.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_compiler.h
+.\objects\uart_irq_pc.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_armcc.h
+.\objects\uart_irq_pc.o: C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.4.0\Device\Include\system_stm32f10x.h
+.\objects\uart_irq_pc.o: .\Users\Init_Drive\UART.h
+.\objects\uart_irq_pc.o: .\Users\Init_Drive\GPIO\GPIO.h
+.\objects\uart_irq_pc.o: .\Users\Init_Drive\GPIO\GPIO_def.h
+.\objects\uart_irq_pc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h

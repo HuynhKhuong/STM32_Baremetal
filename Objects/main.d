@@ -8,8 +8,7 @@
 .\objects\main.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_compiler.h
 .\objects\main.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_armcc.h
 .\objects\main.o: C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.4.0\Device\Include\system_stm32f10x.h
-.\objects\main.o: .\Users\Init_Drive\GPIO.h
+.\objects\main.o: .\Users\Init_Drive\GPIO\GPIO.h
+.\objects\main.o: .\Users\Init_Drive\GPIO\GPIO_def.h
 .\objects\main.o: .\Users\Init_Drive\system_timer.h
 .\objects\main.o: .\Users\Init_Drive\UART.h
-.\objects\main.o: .\User-defined lib\Nokia_5110_LCD.h
-.\objects\main.o: .\Users\Init_Drive\SPI.h

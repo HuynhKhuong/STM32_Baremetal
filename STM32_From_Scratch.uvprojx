@@ -337,7 +337,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>.\Users\Inc;.\User-defined lib;.\Users\Interrupt_Handle;.\Users\Init_Drive</IncludePath>
+              <IncludePath>.\Users\Inc;.\User-defined lib;.\Users\Interrupt_Handle;.\Users\Init_Drive;.\Users\Service;.\Users\Init_Drive\GPIO</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -387,20 +387,25 @@
               <FilePath>.\Users\Src\main.c</FilePath>
             </File>
             <File>
-              <FileName>Nokia_5110_LCD.c</FileName>
+              <FileName>GPIO_ctrl.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\User-defined lib\Nokia_5110_LCD.c</FilePath>
+              <FilePath>.\Users\Service\GPIO_ctrl.c</FilePath>
             </File>
             <File>
-              <FileName>GPIO.c</FileName>
+              <FileName>sys_tick_serv.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Users\Init_Drive\GPIO.c</FilePath>
+              <FilePath>.\Users\Service\sys_tick_serv.c</FilePath>
             </File>
             <File>
-              <FileName>SPI.c</FileName>
+              <FileName>UART_serv.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Users\Init_Drive\SPI.c</FilePath>
+              <FilePath>.\Users\Service\UART_serv.c</FilePath>
             </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Init_Drive</GroupName>
+          <Files>
             <File>
               <FileName>system_timer.c</FileName>
               <FileType>1</FileType>
@@ -412,6 +417,21 @@
               <FilePath>.\Users\Init_Drive\UART.c</FilePath>
             </File>
             <File>
+              <FileName>GPIO.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Users\Init_Drive\GPIO\GPIO.c</FilePath>
+            </File>
+            <File>
+              <FileName>GPIO_def.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Users\Init_Drive\GPIO\GPIO_def.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>ISR</GroupName>
+          <Files>
+            <File>
               <FileName>GPIO_irq.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Users\Interrupt_Handle\GPIO_irq.c</FilePath>
@@ -420,6 +440,21 @@
               <FileName>GPIO_irq_pc.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Users\Interrupt_Handle\GPIO_irq_pc.c</FilePath>
+            </File>
+            <File>
+              <FileName>sys_tick_irq.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Users\Interrupt_Handle\sys_tick_irq.c</FilePath>
+            </File>
+            <File>
+              <FileName>UART_irq.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Users\Interrupt_Handle\UART_irq.c</FilePath>
+            </File>
+            <File>
+              <FileName>UART_irq_pc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Users\Interrupt_Handle\UART_irq_pc.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -1,5 +1,5 @@
-#include "UART_irq.h"
-
+#include "UART_irq_pc.h"
+#include <stdio.h>
 
 /*Data container for all UART instance*/
 UART_data_buffer USART1_data_container_str = {NULL, NULL, 0,0,0,0}; 
@@ -59,9 +59,9 @@ UART_data_buffer USART4_data_container_str = {NULL, NULL, 0,0,0,0};
     if(is_TC_interrupt_u8){                                                                                             \
         (UART)->CR1 &= ~(USART_CR1_TCIE); /*Disable TC interrupt*/                                                      \
         (UART)->CR1 &= ~(USART_CR1_TE); /*TE reset*/                                                                    \
-        USART##_data_container_str.transmitt_buffer = NULL;                                                              \
-        USART##_data_container_str.transmitt_buffer_index = 0;                                                           \
-        USART##_data_container_str.transmitt_buffer_length = 0;                                                          \
+        UART##_data_container_str.transmitt_buffer = NULL;                                                              \
+        UART##_data_container_str.transmitt_buffer_index = 0;                                                           \
+        UART##_data_container_str.transmitt_buffer_length = 0;                                                          \
         UART##_cplt_Transmitt();                                                                                        \
     }                                                                                                                   \
 \
