@@ -3,9 +3,20 @@
 
 #include "stm32f10x.h"
 
+<<<<<<< HEAD
 
 /*
   Enums and Struct supporting drivers initialization
+=======
+/*
+    This file declares enums, defines, constants used for configuring SPI peripherals for STM32f1
+*/
+
+
+
+/*
+  Enums and Struct supporting drivers mechanism
+>>>>>>> master
 */
 
 typedef enum{
@@ -20,4 +31,17 @@ typedef enum{
 }Baudrate_mapping;
 
 
+<<<<<<< HEAD
+=======
+typedef struct{
+    uint8_t* transmitt_buffer;
+    uint8_t* receive_buffer;
+    uint8_t transmitt_buffer_length;
+    uint8_t receive_buffer_length;
+    uint8_t transmitt_buffer_index;
+    uint8_t receive_buffer_index;
+}SPI_Data_buffer;
+
+
+>>>>>>> master
 #endif

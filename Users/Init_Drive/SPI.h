@@ -11,8 +11,13 @@
 @Reference: To understand SPI, I recommend these documents: 
 
 */
+<<<<<<< HEAD
 #include "SPI_def.h"
 
+=======
+#include "stm32f10x.h"
+#include "SPI_def.h"
+>>>>>>> master
 /*
 Brief introduction about SPI architecture:
 - 4 pins: MISO, MOSI (data lines); CLK (for synchronous transmission); NSS (slave select pin, this is optional)
@@ -29,8 +34,18 @@ data line.
   To initialize SPI, GPIO and peripherals clock must be configured!
   Refer to GPIO.h
 */
+<<<<<<< HEAD
 
 //SPI peripherals declare
+=======
+//MACROs initializing SPI (Master mode ony)
+#define SPI_configuration_DECL(SPI_BLOCK, NA1, NA2, NA3) \
+  void SPI_BLOCK##_Configuration(void);\
+  void SPI_BLOCK##_cplt_Transmitt(void);\
+  void SPI_BLOCK##_cplt_Received(void);\
+
+//SPI peripherals setup
+>>>>>>> master
 
 #define SPI_LIST(ENTRY_LIST) \
   /*SPI_peripherals_name*/ \
