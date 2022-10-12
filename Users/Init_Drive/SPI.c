@@ -1,10 +1,6 @@
 #include "SPI.h"
 #include "Nokia_5110_LCD.h"
 #include <stdio.h>
-//Data container
-
-static SPI_Data_buffer SPI1_data_container_str = {NULL, NULL, 0,0,0,0}; 
-static SPI_Data_buffer SPI2_data_container_str = {NULL, NULL, 0,0,0,0}; 
 
 
 //MACROs initializing SPI (Master mode ony)
@@ -95,53 +91,4 @@ void SPI_Write(SPI_TypeDef* SPI, uint8_t* data_u8_array, uint8_t data_length_u8)
   */
   SPI->CR1 |= SPI_CR1_SPE;
   SPI->CR2 |= SPI_CR2_TXEIE;
-}
-
-//Interrupt handler
-static void SPI1_TXE_interrupt(void){
-    /*handle if this is the last byte*/                                                                                 
-    uint8_t finished_transmitted_u8 = (SPI1_data_container_str.transmitt_buffer_length == SPI1_data_container_str.transmitt_buffer_index);                                       
-                                                                                                                        
-    if(finished_transmitted_u8){                                              
-        //finished transmit, call cplt call-back function
-      SPI1_cplt_Transmitt();
-    }                                                                                                                   
-    else{
-      SPI1->DR =  SPI1_data_container_str.transmitt_buffer[SPI1_data_container_str.transmitt_buffer_index];         
-      SPI1_data_container_str.transmitt_buffer_index++;                                                                                  
-    }
-}
-
-void SPI1_IRQHandler(void){
-  /*Check Rx or Tx interrupt*/
-  uint8_t isTxInterrupt_u8;
-  uint8_t isRxInterrupt_u8;
-
-  isTxInterrupt_u8 = ((SPI1->SR) & 0x02) >> 1; //bit 1 is TXE interrupt
-  isRxInterrupt_u8 = ((SPI1->SR) & 0x01); //bit 0 is RXNE interrupt
-
-  if(isTxInterrupt_u8){
-    SPI1_TXE_interrupt();
-  }
-} 
-
-void SPI1_cplt_Transmitt(void){
-  //Complete transmitt Via SPI, disable the communication and interrupt as well
-  uint8_t is_busy_u8 = 1;
-  
-  while(is_busy_u8){ 
-    /*Wait until busy flag is reset*/
-    is_busy_u8 = (SPI1->SR & SPI_SR_BSY) >> 7; //7 is bit position of BUSY FLASG
-  }
-
-  SPI1->CR1 &= ~(SPI_CR1_SPE);
-  SPI1->CR2 &= ~(SPI_CR2_TXEIE);
-
-  //Clear data container
-  SPI1_data_container_str.transmitt_buffer = NULL;
-  SPI1_data_container_str.transmitt_buffer_length = 0;
-  SPI1_data_container_str.transmitt_buffer_index = 0;
-
-  /*User's application*/
-	transmit_cplt_b = 0;
 }

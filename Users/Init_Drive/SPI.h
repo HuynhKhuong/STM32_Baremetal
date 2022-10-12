@@ -11,7 +11,7 @@
 @Reference: To understand SPI, I recommend these documents: 
 
 */
-#include "stm32f10x.h"
+#include "SPI_def.h"
 
 /*
 Brief introduction about SPI architecture:
@@ -38,11 +38,9 @@ data line.
   /*By default, clock speed is 36MHz*/ \
   /*CPHA = 1, CPOL = 1*/ \
   ENTRY_LIST(SPI1, DIV_16, 1, 1)
-  
+
 #define SPI_configuration_DECL(SPI_BLOCK, NA1, NA2, NA3) \
   void SPI_BLOCK##_Configuration(void);\
-  void SPI_BLOCK##_cplt_Transmitt(void);\
-  void SPI_BLOCK##_cplt_Received(void);\
 
 /*Function's declarations*/ 
 SPI_LIST(SPI_configuration_DECL)

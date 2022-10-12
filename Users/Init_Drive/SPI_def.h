@@ -5,7 +5,7 @@
 
 
 /*
-  Enums and Struct supporting drivers mechanism
+  Enums and Struct supporting drivers initialization
 */
 
 typedef enum{
@@ -18,17 +18,6 @@ typedef enum{
   DIV_128 = 6,
   DIV_256 = 7,
 }Baudrate_mapping;
-
-
-typedef struct{
-    uint8_t* transmitt_buffer;
-    uint8_t* receive_buffer;
-    uint8_t transmitt_buffer_length;
-    uint8_t receive_buffer_length;
-    uint8_t transmitt_buffer_index;
-    uint8_t receive_buffer_index;
-}SPI_Data_buffer;
-
 
 
 #endif
