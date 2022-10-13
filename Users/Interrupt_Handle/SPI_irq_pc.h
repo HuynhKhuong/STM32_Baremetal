@@ -21,18 +21,5 @@ extern SPI_Data_buffer SPI2_data_container_str = {NULL, NULL, 0,0,0,0};
 
 #define SPI_IRQ_DECL(SPI_BLOCK, NA1, NA2, NA3) \
   void SPI_BLOCK##_cplt_Transmitt(void);\
-=======
-#ifndef __SPI_IRQ_PC_H__
-#define __SPI_IRQ_PC_H__
-
-/*  Declare functions for 
-    - initializing SPI's interrupt handler 
-    - handle logics for interrupt handler
-*/
-
-#include "SPI.h"
-
-#define 
->>>>>>> master
-
+  
 #endif
