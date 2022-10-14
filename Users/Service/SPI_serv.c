@@ -5,6 +5,7 @@
   local_buffers
   these objects are indexed by enum
 */
+
 /*
   Instances are obtained locally inside function
 */
