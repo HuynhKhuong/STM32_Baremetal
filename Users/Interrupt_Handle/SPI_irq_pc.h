@@ -10,5 +10,7 @@
 
 #define SPI_IRQ_DECL(SPI_BLOCK, NA1, NA2, NA3) \
   void SPI_BLOCK##_cplt_Transmitt(void);\
-  
+
+SPI_LIST(SPI_IRQ_DECL)
+
 #endif

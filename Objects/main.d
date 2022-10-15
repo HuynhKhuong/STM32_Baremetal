@@ -20,5 +20,5 @@
 .\objects\main.o: .\Users\Interrupt_Handle\GPIO_irq_pc.h
 .\objects\main.o: .\Users\Service\SPI_serv.h
 .\objects\main.o: .\Users\Interrupt_Handle\SPI_irq_pc.h
-.\objects\main.o: .\Users\Init_Drive\SPI.h
-.\objects\main.o: .\Users\Init_Drive\SPI_def.h
+.\objects\main.o: .\Users\Init_Drive\SPI\SPI.h
+.\objects\main.o: .\Users\Init_Drive\SPI\SPI_def.h

@@ -13,7 +13,7 @@ uint32_t fractional_part_u32, mantisa_part_u32, brr_result_u32;
 #define UART_Configuration(UART, CLOCK_REG, WORD_L,STOP_BIT ) \
         static void UART_configure_##UART(void){\
         /*Procedure: 1. Clock enable for UART peripheral*/\
-            RCC->##CLOCK_REG##ENR |= RCC_##CLOCK_REG##ENR_##UART##EN;\
+            RCC->CLOCK_REG##ENR |= RCC_##CLOCK_REG##ENR_##UART##EN;\
             /*Note that its clock speed source is AHB clock speed, which is extracted from System clock speed*/\
             /*2. Enable USART communication*/\
             (UART)->CR1 |= USART_CR1_UE; \

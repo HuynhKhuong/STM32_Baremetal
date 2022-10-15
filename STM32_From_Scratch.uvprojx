@@ -432,14 +432,14 @@
               <FilePath>.\Users\Init_Drive\GPIO\GPIO_def.c</FilePath>
             </File>
             <File>
-              <FileName>SPI.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Users\Init_Drive\SPI.c</FilePath>
-            </File>
-            <File>
               <FileName>SPI_cfg.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Users\Init_Drive\SPI\SPI_cfg.c</FilePath>
+            </File>
+            <File>
+              <FileName>SPI.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Users\Init_Drive\SPI\SPI.c</FilePath>
             </File>
           </Files>
         </Group>

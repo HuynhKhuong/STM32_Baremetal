@@ -13,7 +13,7 @@
 SPI_Write()
 @Brief: function handles transmit info from Master to Slave using Interrupt mechanism
 */
-void SPI_Write(const SPI_hardware_conf SPI_index, uint8_t* data_u8_array, uint8_t data_length_u8){
+void SPI_Write(const SPI_HANDLES SPI_index, uint8_t* data_u8_array, uint8_t data_length_u8){
   /*
     Master transmit sequence:
     - The transmit sequence begins when a byte is written in the Tx Buffer.
@@ -33,12 +33,12 @@ void SPI_Write(const SPI_hardware_conf SPI_index, uint8_t* data_u8_array, uint8_
     4. Wait until RXNE=1 and read the last received data.
     5. Wait until TXE=1 and then wait until BSY=0 before disabling the SPI.
   */
-  SPI_typdef* const SPI_conf = SPI_hardware_conf[SPI_index].SPI; 
+  SPI_TypeDef* const SPI_conf = SPI_hardware_conf[SPI_index].SPI; 
   SPI_Data_buffer* const data_container_str = SPI_hardware_conf[SPI_index].SPI_data_containter_str; 
 
-  data_container_str.transmitt_buffer = data_u8_array;
-  data_container_str.transmitt_buffer_length = data_length_u8;
-  data_container_str.transmitt_buffer_index = 0;
+  data_container_str->transmitt_buffer = data_u8_array;
+  data_container_str->transmitt_buffer_length = data_length_u8;
+  data_container_str->transmitt_buffer_index = 0;
 
   /*
     Enable SPI's SPI transmission and Transmit interrupt  

@@ -28,159 +28,43 @@ Project File Date:  10/15/2022
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Rebuild target 'Target 1'
 compiling SPI_serv.c...
-.\Users\Init_Drive\SPI_def.h(6): error:  #169: expected a declaration
-  <<<<<<< HEAD
-.\Users\Init_Drive\SPI_def.h(11): warning:  #9-D: nested comment is not allowed
-  /*
-.\Users\Init_Drive\SPI_def.h(31): warning:  #12-D: parsing restarts here after previous syntax error
-  }Baudrate_mapping;
-.\Users\Init_Drive\SPI_def.h(34): error:  #169: expected a declaration
-  <<<<<<< HEAD
-.\Users\Init_Drive\SPI_def.h(43): warning:  #12-D: parsing restarts here after previous syntax error
-  }SPI_Data_buffer;
-.\Users\Init_Drive\SPI_def.h(46): error:  #169: expected a declaration
-  >>>>>>> master
-.\Users\Init_Drive\SPI.h(46): warning:  #12-D: parsing restarts here after previous syntax error
-  SPI_LIST(SPI_configuration_DECL)
-Users\Service\SPI_serv.c(16): error:  #20: identifier "SPI_hardware_conf" is undefined
-  void SPI_Write(const SPI_hardware_conf SPI_index, uint8_t* data_u8_array, uint8_t data_length_u8){
-KB: Unexpected type: 0
-error type>(36): error:  #20: identifier "SPI_typdef" is undefined
-    SPI_typdef* const SPI_conf = SPI_hardware_conf[SPI_index].SPI; 
-Users\Service\SPI_serv.c(36): error:  #29: expected an expression
-    SPI_typdef* const SPI_conf = SPI_hardware_conf[SPI_index].SPI; 
-Users\Service\SPI_serv.c(37): error:  #20: identifier "SPI_Data_buffer" is undefined
-    SPI_Data_buffer* const data_container_str = SPI_hardware_conf[SPI_index].SPI_data_containter_str; 
-Users\Service\SPI_serv.c(37): error:  #29: expected an expression
-    SPI_Data_buffer* const data_container_str = SPI_hardware_conf[SPI_index].SPI_data_containter_str; 
-Users\Service\SPI_serv.c(39): error:  #20: identifier "data_container_str" is undefined
-    data_container_str.transmitt_buffer = data_u8_array;
-Users\Service\SPI_serv.c(46): error:  #20: identifier "SPI_conf" is undefined
-    SPI_conf->CR1 |= SPI_CR1_SPE;
-Users\Service\SPI_serv.c: 4 warnings, 10 errors
+compiling UART_serv.c...
+compiling system_timer.c...
+compiling GPIO_ctrl.c...
 compiling main.c...
-.\Users\Init_Drive\SPI_def.h(6): error:  #169: expected a declaration
-  <<<<<<< HEAD
-.\Users\Init_Drive\SPI_def.h(11): warning:  #9-D: nested comment is not allowed
-  /*
-.\Users\Init_Drive\SPI_def.h(31): warning:  #12-D: parsing restarts here after previous syntax error
-  }Baudrate_mapping;
-.\Users\Init_Drive\SPI_def.h(34): error:  #169: expected a declaration
-  <<<<<<< HEAD
-.\Users\Init_Drive\SPI_def.h(43): warning:  #12-D: parsing restarts here after previous syntax error
-  }SPI_Data_buffer;
-.\Users\Init_Drive\SPI_def.h(46): error:  #169: expected a declaration
-  >>>>>>> master
-.\Users\Init_Drive\SPI.h(46): warning:  #12-D: parsing restarts here after previous syntax error
-  SPI_LIST(SPI_configuration_DECL)
 Users\Src\main.c(38): warning:  #111-D: statement is unreachable
     return 0;
 Users\Src\main.c(27): warning:  #177-D: variable "inputpin_u8"  was declared but never referenced
     uint8_t inputpin_u8 = 0; 
 Users\Src\main.c(28): warning:  #177-D: variable "output_state"  was declared but never referenced
   	uint8_t output_state = 0;
-Users\Src\main.c: 7 warnings, 3 errors
+Users\Src\main.c: 3 warnings, 0 errors
 compiling sys_tick_serv.c...
 Users\Service\sys_tick_serv.c(10): warning:  #177-D: function "set_Systick"  was declared but never referenced
   static void set_Systick(uint32_t set_val_u32){
 Users\Service\sys_tick_serv.c(6): warning:  #177-D: function "get_Systick"  was declared but never referenced
   static uint32_t get_Systick(void){
 Users\Service\sys_tick_serv.c: 2 warnings, 0 errors
-compiling GPIO_ctrl.c...
-compiling system_timer.c...
-compiling UART_serv.c...
 compiling UART.c...
-Users\Init_Drive\UART.c(45): warning:  #2795-D: concatenation with "APB2ENR" in macro "UART_Configuration"  does not create a valid token
-  UART_LIST_CONFIGURE(UART_Configuration)
-Users\Init_Drive\UART.c: 1 warning, 0 errors
-compiling SPI.c...
-Users\Init_Drive\SPI_def.h(6): error:  #169: expected a declaration
-  <<<<<<< HEAD
-Users\Init_Drive\SPI_def.h(11): warning:  #9-D: nested comment is not allowed
-  /*
-Users\Init_Drive\SPI_def.h(31): warning:  #12-D: parsing restarts here after previous syntax error
-  }Baudrate_mapping;
-Users\Init_Drive\SPI_def.h(34): error:  #169: expected a declaration
-  <<<<<<< HEAD
-Users\Init_Drive\SPI_def.h(43): warning:  #12-D: parsing restarts here after previous syntax error
-  }SPI_Data_buffer;
-Users\Init_Drive\SPI_def.h(46): error:  #169: expected a declaration
-  >>>>>>> master
-Users\Init_Drive\SPI.h(46): warning:  #12-D: parsing restarts here after previous syntax error
-  SPI_LIST(SPI_configuration_DECL)
-Users\Init_Drive\SPI.c(48): error:  #20: identifier "DIV_16" is undefined
-  SPI_LIST(SPI_configuration)
-Users\Init_Drive\SPI.c: 4 warnings, 4 errors
-compiling GPIO.c...
 compiling SPI_cfg.c...
-Users\Init_Drive\SPI\SPI_def.h(38): error:  #40: expected an identifier
-    SPI1 = 0,
-Users\Init_Drive\SPI\SPI_def.h(39): error:  #40: expected an identifier
-    SPI2 = 1,
-Users\Init_Drive\SPI\SPI_def.h(44): error:  #65: expected a ";"
-  extern SPI_LL_conf_st SPI_hardware_conf[MAX_SPI];
-Users\Init_Drive\SPI\SPI_cfg.c: 0 warnings, 3 errors
-compiling GPIO_def.c...
+compiling SPI.c...
 compiling GPIO_irq_pc.c...
-compiling sys_tick_irq.c...
+compiling GPIO_def.c...
+compiling GPIO.c...
 compiling GPIO_irq.c...
+compiling sys_tick_irq.c...
 assembling startup_stm32f10x_md.s...
 compiling SPI_irq.c...
-.\Users\Init_Drive\SPI_def.h(6): error:  #169: expected a declaration
-  <<<<<<< HEAD
-.\Users\Init_Drive\SPI_def.h(11): warning:  #9-D: nested comment is not allowed
-  /*
-.\Users\Init_Drive\SPI_def.h(31): warning:  #12-D: parsing restarts here after previous syntax error
-  }Baudrate_mapping;
-.\Users\Init_Drive\SPI_def.h(34): error:  #169: expected a declaration
-  <<<<<<< HEAD
-.\Users\Init_Drive\SPI_def.h(43): warning:  #12-D: parsing restarts here after previous syntax error
-  }SPI_Data_buffer;
-.\Users\Init_Drive\SPI_def.h(46): error:  #169: expected a declaration
-  >>>>>>> master
-.\Users\Init_Drive\SPI.h(46): warning:  #12-D: parsing restarts here after previous syntax error
-  SPI_LIST(SPI_configuration_DECL)
-Users\Interrupt_Handle\SPI_irq.c: 4 warnings, 3 errors
+compiling UART_irq.c...
 compiling SPI_irq_pc.c...
-.\Users\Init_Drive\SPI_def.h(6): error:  #169: expected a declaration
-  <<<<<<< HEAD
-.\Users\Init_Drive\SPI_def.h(11): warning:  #9-D: nested comment is not allowed
-  /*
-.\Users\Init_Drive\SPI_def.h(31): warning:  #12-D: parsing restarts here after previous syntax error
-  }Baudrate_mapping;
-.\Users\Init_Drive\SPI_def.h(34): error:  #169: expected a declaration
-  <<<<<<< HEAD
-.\Users\Init_Drive\SPI_def.h(43): warning:  #12-D: parsing restarts here after previous syntax error
-  }SPI_Data_buffer;
-.\Users\Init_Drive\SPI_def.h(46): error:  #169: expected a declaration
-  >>>>>>> master
-.\Users\Init_Drive\SPI.h(46): warning:  #12-D: parsing restarts here after previous syntax error
-  SPI_LIST(SPI_configuration_DECL)
-Users\Interrupt_Handle\SPI_irq_pc.c(4): error:  #20: identifier "SPI_Data_buffer" is undefined
-  SPI_Data_buffer SPI1_data_container_str = {NULL, NULL, 0,0,0,0}; 
-Users\Interrupt_Handle\SPI_irq_pc.c(4): error:  #20: identifier "NULL" is undefined
-  SPI_Data_buffer SPI1_data_container_str = {NULL, NULL, 0,0,0,0}; 
-Users\Interrupt_Handle\SPI_irq_pc.c(5): error:  #20: identifier "SPI_Data_buffer" is undefined
-  SPI_Data_buffer SPI2_data_container_str = {NULL, NULL, 0,0,0,0}; 
-Users\Interrupt_Handle\SPI_irq_pc.c(49): warning:  #1-D: last line of file ends without a newline
-  SPI_LIST(SPI_Communication_Handler) //Handle interrupt for defined SPI peripherals
-Users\Interrupt_Handle\SPI_irq_pc.c(49): warning:  #223-D: function "SPI1_TXE_interrupt" declared implicitly
-  SPI_LIST(SPI_Communication_Handler) //Handle interrupt for defined SPI peripherals
 Users\Interrupt_Handle\SPI_irq_pc.c(49): warning:  #550-D: variable "isRxInterrupt_u8"  was set but never used
   SPI_LIST(SPI_Communication_Handler) //Handle interrupt for defined SPI peripherals
-Users\Interrupt_Handle\SPI_irq_pc.c(49): warning:  #159-D: declaration is incompatible with previous "SPI1_TXE_interrupt"  (declared at line 49)
-  SPI_LIST(SPI_Communication_Handler) //Handle interrupt for defined SPI peripherals
-Users\Interrupt_Handle\SPI_irq_pc.c(49): error:  #20: identifier "SPI1data_container_str" is undefined
-  SPI_LIST(SPI_Communication_Handler) //Handle interrupt for defined SPI peripherals
-Users\Interrupt_Handle\SPI_irq_pc.c(49): warning:  #223-D: function "SPI1_cplt_Transmitt" declared implicitly
-  SPI_LIST(SPI_Communication_Handler) //Handle interrupt for defined SPI peripherals
-Users\Interrupt_Handle\SPI_irq_pc.c(49): warning:  #177-D: function "SPI1_TXE_interrupt"  was declared but never referenced
-  SPI_LIST(SPI_Communication_Handler) //Handle interrupt for defined SPI peripherals
-Users\Interrupt_Handle\SPI_irq_pc.c: 10 warnings, 7 errors
-compiling UART_irq.c...
+Users\Interrupt_Handle\SPI_irq_pc.c: 1 warning, 0 errors
 compiling UART_irq_pc.c...
 compiling system_stm32f10x.c...
-".\Objects\STM32_From_Scratch.axf" - 30 Error(s), 32 Warning(s).
+linking...
+Program Size: Code=1928 RO-data=396 RW-data=32 ZI-data=1720  
+".\Objects\STM32_From_Scratch.axf" - 0 Error(s), 6 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -211,7 +95,6 @@ Package Vendor: Keil
       Source file:   Device\Source\ARM\STM32F1xx_OPT.s
       Source file:   Device\Source\ARM\startup_stm32f10x_md.s
       Source file:   Device\Source\system_stm32f10x.c
-Target not created.
 Build Time Elapsed:  00:00:04
 </pre>
 </body>
