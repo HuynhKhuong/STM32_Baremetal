@@ -17,7 +17,7 @@ NOKIA_5110* NOKIA_5110_ctor(uint8_t V_operation, uint8_t bias_config){
 
     if(temp_pointer != NULL){
         //Attach the LL peripherals to the current object 
-        temp_pointer->bare_metal_config_str.SPI = SPI1;
+        temp_pointer->bare_metal_config_str.SPI = SPI_1;
         temp_pointer->bare_metal_config_str.Comm_Port = GPIOA;
         temp_pointer->bare_metal_config_str.RS_PIN_u16 = GPIO_PIN_3;
         temp_pointer->bare_metal_config_str.DC_PIN_u16 = GPIO_PIN_4;

@@ -27,7 +27,7 @@ int main() {
 	
 	/*Users's Application initialization*/
 	GPIO_WritePin(GPIOC, 13, 1);
-  NOKIA_5110* my_NOKIA5110 = NOKIA_5110_ctor(0x20, 0x13);
+  my_NOKIA5110 = NOKIA_5110_ctor(0x20, 0x13);
 	
 	while(1){
 		Delay_ms_tick(1000);
