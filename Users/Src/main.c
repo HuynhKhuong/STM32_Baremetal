@@ -19,11 +19,8 @@ int main() {
   */
 
   /*Hardware configuration */
-  GPIO_Initialization();
-	Systick_Initialization(0);
-
-	
-	UART_init();
+  USERS_CHOICE(YES, YES,YES, NO)
+  
 	UART_Receive(USART1, &DUMMY_RECEIVE[0], 11);
 	
   /* User's Application */
