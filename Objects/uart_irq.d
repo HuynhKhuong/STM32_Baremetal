@@ -11,3 +11,4 @@
 .\objects\uart_irq.o: .\Users\Init_Drive\UART.h
 .\objects\uart_irq.o: .\Users\Init_Drive\GPIO\GPIO.h
 .\objects\uart_irq.o: .\Users\Init_Drive\GPIO\GPIO_def.h
+.\objects\uart_irq.o: .\Users\Service\UART_serv.h

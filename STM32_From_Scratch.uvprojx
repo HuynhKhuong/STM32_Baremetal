@@ -337,7 +337,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>.\Users\Inc;.\User-defined lib;.\Users\Interrupt_Handle;.\Users\Init_Drive;.\Users\Service;.\Users\Init_Drive\GPIO</IncludePath>
+              <IncludePath>.\Users\Inc;.\User-defined lib;.\Users\Interrupt_Handle;.\Users\Init_Drive;.\Users\Service;.\Users\Init_Drive\GPIO;.\Users\Init_Drive\SPI</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -401,6 +401,11 @@
               <FileType>1</FileType>
               <FilePath>.\Users\Service\UART_serv.c</FilePath>
             </File>
+            <File>
+              <FileName>SPI_serv.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Users\Service\SPI_serv.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -425,6 +430,16 @@
               <FileName>GPIO_def.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Users\Init_Drive\GPIO\GPIO_def.c</FilePath>
+            </File>
+            <File>
+              <FileName>SPI.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Users\Init_Drive\SPI.c</FilePath>
+            </File>
+            <File>
+              <FileName>SPI_cfg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Users\Init_Drive\SPI\SPI_cfg.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -455,6 +470,16 @@
               <FileName>UART_irq_pc.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Users\Interrupt_Handle\UART_irq_pc.c</FilePath>
+            </File>
+            <File>
+              <FileName>SPI_irq.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Users\Interrupt_Handle\SPI_irq.c</FilePath>
+            </File>
+            <File>
+              <FileName>SPI_irq_pc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Users\Interrupt_Handle\SPI_irq_pc.c</FilePath>
             </File>
           </Files>
         </Group>
