@@ -35,10 +35,10 @@ typedef struct{
 
 //Specific for STM32F103
 typedef enum{
-  SPI1 = 0,
-  SPI2 = 1,
+  SPI_1 = 0,
+  SPI_2 = 1,
   MAX_SPI,
-}SPI_HANDLES
+}SPI_HANDLES;
 
 /// Hardware Configurations
 extern SPI_LL_conf_st SPI_hardware_conf[MAX_SPI];
