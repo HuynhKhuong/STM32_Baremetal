@@ -86,7 +86,7 @@ void NOKIA_set_Y(uint8_t Y_u8, NOKIA_5110* instance){
 void NOKIA_set_single_data(uint8_t data_u8, NOKIA_5110* instance){
     //setup data and do SPI transmit
     instance->LCD_config_str.LCD_ptr->data_u8 = data_u8;
-    SPI_Write(SPI1, &(instance->LCD_config_str.LCD_ptr->data_u8), 1);
+    SPI_Write(instance->bare_metal_config_str.SPI, &(instance->LCD_config_str.LCD_ptr->data_u8), 1);
 
     //Wait until user's flag is reset
     transmit_cplt_b = 1;

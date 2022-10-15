@@ -3,7 +3,7 @@
 
 #include "SPI_serv.h"
 #include "GPIO_ctrl.h"
-
+#include "sys_tick_serv.h"
 /*
 @Author: Huynh Khuong
 @Brief: This library is written as an application which makes used of SPI bare-metal driver to communicate with Nokia-5110 LCD
@@ -74,7 +74,7 @@ typedef struct{
 //Main object structure
 typedef struct{
     //public attributes
-    const NOKIA_5110_hardware_config bare_metal_config_str;
+    NOKIA_5110_hardware_config bare_metal_config_str;
     NOKIA_features_config LCD_config_str;
 
     //vector table for polymorphism
