@@ -16,6 +16,15 @@
         /*UART, output open-drain, max speed, input, floating*/ \
         ENTRYLIST(GPIOA, 10, CRH, 10_0, INPUT,  10_2) \
         ENTRYLIST(GPIOA, 9, CRH, 9, INPUT,  9)\
+        /*SPI*/ \
+        /*Output: open-drain, maxspeed, Input: floating*/\
+        ENTRYLIST(GPIOA, 5, CRL, 5, OUTPUT, 5) \
+        ENTRYLIST(GPIOA, 6, CRL, 6_0, OUTPUT, 6_2 ) \
+        ENTRYLIST(GPIOA, 7, CRL, 7, OUPUT, 7) \
+        /*Output: Push-pull, maxspeed*/\
+        ENTRYLIST(GPIOA, 3, CRL, 3_2,OUTPUT, 3) \
+        ENTRYLIST(GPIOA, 4, CRL, 4_2,OUTPUT, 4) \
+        ENTRYLIST(GPIOA, 2, CRL, 2_2,OUTPUT, 2) \
 
 
 /*For APB_bus_bit position: 

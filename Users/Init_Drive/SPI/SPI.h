@@ -33,6 +33,7 @@ data line.
 
 // SPI peripherals declaration
 #define SPI_LIST(ENTRY_LIST) \
+  /*Initialize SPI for NOKIA 5110 LCD*/\
   /*SPI_peripherals_name*/ \
   /*clock frequency is 0MHz < < 4MHz*/ \
   /*By default, clock speed is 36MHz*/ \

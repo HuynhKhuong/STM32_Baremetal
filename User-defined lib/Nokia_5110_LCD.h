@@ -1,9 +1,8 @@
 #ifndef __NOKIA_5110_LCD_H__
 #define __NOKIA_5110_LCD_H__
 
-#include "stm32f10x.h"
-#include "SPI.h"
-#include "GPIO.h"
+#include "SPI_serv.h"
+#include "GPIO_ctrl.h"
 
 /*
 @Author: Huynh Khuong
@@ -41,25 +40,11 @@ typedef enum{
 extern uint8_t transmit_cplt_b;
 
 //Low layer initialization
-#define COMM_LIST(ENTRY_PARAMS) \
-    /*SPI_BLOCK, BAURATE_DIV, CPOL, CPHA*/\
-    ENTRY_PARAMS(SPI1, (Baudrate_mapping)3, 1, 1)\
-
-#define COMM_PIN_LIST(ENTRYLIST) \
-        /*Output: open-drain, maxspeed, Input: floating*/\
-        ENTRYLIST(GPIOA, 5, CRL, 5, OUTPUT, 5) \
-        ENTRYLIST(GPIOA, 6, CRL, 6_0, OUTPUT, 6_2 ) \
-        ENTRYLIST(GPIOA, 7, CRL, 7, OUPUT, 7) \
-        /*Output: Push-pull, maxspeed*/\
-        ENTRYLIST(GPIOA, 3, CRL, 3_2,OUTPUT, 3) \
-        ENTRYLIST(GPIOA, 4, CRL, 4_2,OUTPUT, 4) \
-        ENTRYLIST(GPIOA, 2, CRL, 2_2,OUTPUT, 2) \
-
-#define PORT_LIST(ENTRYLIST) \
-        ENTRYLIST(GPIOA, AHB1, APB2, RCC_APB2ENR_IOPAEN, COMM_PIN_LIST)
-
-COMM_LIST(SPI_configuration_DECL)
-PORT_LIST(GPIO_Configure_DELC)
+/* 
+    Check If related Low Layer peripherals have been Initialized or not?
+    pin: 234, 567 (output)
+    SPI1 block
+*/
 
 struct vtbl{
 
@@ -74,7 +59,7 @@ typedef struct{
 }LCD_position_orientation;
 
 typedef struct{
-    SPI_TypeDef* SPI;
+    SPI_HANDLES SPI;
     GPIO_TypeDef* Comm_Port;
     uint16_t RS_PIN_u16;
     uint16_t DC_PIN_u16;
@@ -89,7 +74,7 @@ typedef struct{
 //Main object structure
 typedef struct{
     //public attributes
-    NOKIA_5110_hardware_config bare_metal_config_str;
+    const NOKIA_5110_hardware_config bare_metal_config_str;
     NOKIA_features_config LCD_config_str;
 
     //vector table for polymorphism

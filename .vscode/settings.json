@@ -7,6 +7,7 @@
     "system_timer.h": "c",
     "uart.h": "c",
     "spi_irq_pc.h": "c",
-    "spi_serv.h": "c"
+    "spi_serv.h": "c",
+    "stdio.h": "c"
   }
 }
