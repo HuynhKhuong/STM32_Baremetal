@@ -30,6 +30,7 @@
 #define BIAS_SYSTEM_CONF        (0x13)
 #define ENTER_COMMAND_MODE_EX   (0x21)
 #define ENTER_COMMAND_MODE      (0X20)
+#define NORMAL_MODE 						(0x0C)
 
 typedef enum{
 	false = 0u,

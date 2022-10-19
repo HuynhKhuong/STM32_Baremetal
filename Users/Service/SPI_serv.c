@@ -46,3 +46,18 @@ void SPI_Write(const SPI_HANDLES SPI_index, uint8_t* data_u8_array, uint8_t data
   SPI_conf->CR1 |= SPI_CR1_SPE;
   SPI_conf->CR2 |= SPI_CR2_TXEIE;
 }
+
+void SPI_Read(const SPI_HANDLES SPI_index, uint8_t* data_u8_array, uint8_t data_length_u8){
+
+  SPI_TypeDef* const SPI_conf = SPI_hardware_conf[SPI_index].SPI; 
+  SPI_Data_buffer* const data_container_str = SPI_hardware_conf[SPI_index].SPI_data_containter_str; 
+
+  data_container_str->receive_buffer = data_u8_array;
+  data_container_str->receive_buffer_length = data_length_u8;
+  data_container_str->receive_buffer_index = 0;
+  /*
+    Enable SPI's Transmit interrupt  
+  */
+  SPI_conf->CR1 |= SPI_CR1_SPE;
+  SPI_conf->CR2 |= SPI_CR2_RXNEIE;
+}

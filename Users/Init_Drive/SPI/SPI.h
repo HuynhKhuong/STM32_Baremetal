@@ -35,11 +35,13 @@ data line.
 #define SPI_LIST(ENTRY_LIST) \
   /*SPI_peripherals_name*/ \
   /*clock frequency is 0MHz < < 4MHz*/ \
-  /*By default, clock speed is 36MHz*/ \
+  /*By default, clock speed SPI1 (APB1) is 36MHz*/ \
   /*CPHA = 1, CPOL = 1*/ \
-  ENTRY_LIST(SPI1, DIV_16, 1, 1)
+  ENTRY_LIST(SPI1, DIV_16, 1, 1, APB2, MASTER)\
+	  /*By default, clock speed SPI2 (APB2) is 72MHz*/ \
+  ENTRY_LIST(SPI2, DIV_16, 1, 1, APB1, SLAVE)\
 
-#define SPI_configuration_DECL(SPI_BLOCK, NA1, NA2, NA3) \
+#define SPI_configuration_DECL(SPI_BLOCK, NA1, NA2, NA3, NA4, NA5) \
   void SPI_BLOCK##_Configuration(void);\
 
 /*Function's declarations*/ 

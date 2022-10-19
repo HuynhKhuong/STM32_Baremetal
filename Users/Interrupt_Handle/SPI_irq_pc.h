@@ -8,8 +8,8 @@
 
 //Datatype for data container working in low layer when communicating via SPI
 
-#define SPI_IRQ_DECL(SPI_BLOCK, NA1, NA2, NA3) \
-  void SPI_BLOCK##_cplt_Transmitt(void);\
+#define SPI_IRQ_DECL(SPI_BLOCK, NA1, NA2, NA3, NA4, NA5) \
+  void SPI_BLOCK##_cplt_Comm(void);\
 
 SPI_LIST(SPI_IRQ_DECL)
 

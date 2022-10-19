@@ -3,29 +3,51 @@
 
 #include "GPIO_def.h"
 
+/*-------------------------------------------------------------------------------------------------------*/
+//CNF configuration
+#define INPUT_PULLUP_DOWN(CONFIGURE_REG,PIN) GPIO_##CONFIGURE_REG##_CNF##PIN##_1
+#define FLOATING_INPUT(CONFIGURE_REG,PIN) GPIO_##CONFIGURE_REG##_CNF##PIN##_0
+#define INPUT_ANALOG(CONFIGURE_REG,PIN) GPIO_##CONFIGURE_REG##_CNF##PIN##_2
+
+#define OUTPUT_PUSHPULL(CONFIGURE_REG,PIN)	GPIO_##CONFIGURE_REG##_CNF##PIN##_2
+#define OUTPUT_OPENDRAIN(CONFIGURE_REG,PIN)	GPIO_##CONFIGURE_REG##_CNF##PIN##_0
+#define ALT_PUSHPULL(CONFIGURE_REG,PIN)	GPIO_##CONFIGURE_REG##_CNF##PIN##_1
+#define ALT_OPENDRAIN(CONFIGURE_REG,PIN) GPIO_##CONFIGURE_REG##_CNF##PIN
+
+//MODE configuration
+#define INPUTMODE(CONFIGURE_REG,PIN) GPIO_##CONFIGURE_REG##_MODE##PIN##_2
+#define OUTPUTMODE_10MHZ(CONFIGURE_REG,PIN)	GPIO_##CONFIGURE_REG##_MODE##PIN##_0
+#define OUTPUTMODE_2MHZ(CONFIGURE_REG,PIN)	GPIO_##CONFIGURE_REG##_MODE##PIN##_1
+#define OUTPUTMODE_50MHZ(CONFIGURE_REG,PIN)	GPIO_##CONFIGURE_REG##_MODE##PIN
+
+//Reset bit in reg
+#define RESET_MODE_BITS(CONFIGURE_REG, PIN) GPIO_##CONFIGURE_REG##_MODE##PIN
+#define RESET_CNF_BITS(CONFIGURE_REG, PIN) GPIO_##CONFIGURE_REG##_CNF##PIN
 
 /*-------------------------------------------------------------------------------------------------------*/
 /*List declaration*/
 #define PINLIST_C(ENTRYLIST) \
-        /*GPIO_PORT, pin, Control_Register, bit_value, OUTPUT, Speed_bit_value*/\
-        ENTRYLIST(GPIOC, 13_2, CRH, 13_0, OUTPUT, 13) 
+        /*GPIO_PORT, pin, Control_Register, MODE, CNF*/\
+        ENTRYLIST(GPIOC, 13, CRH, OUTPUTMODE_50MHZ,OUTPUT_PUSHPULL) 
 
 #define PINLIST_A(ENTRYLIST) \
-        /*GPIO_PORT, pin, Control_Register, CFN, OUTPUT, Mode_value*/\
-        ENTRYLIST(GPIOA, 0, CRL, 0_1, INPUT,  0_2) \
+        /*GPIO_PORT, pin, Control_Register, MODE, CNF*/\
         /*UART, output open-drain, max speed, input, floating*/ \
-        ENTRYLIST(GPIOA, 10, CRH, 10_0, INPUT,  10_2) \
-        ENTRYLIST(GPIOA, 9, CRH, 9, INPUT,  9)\
-        /*SPI*/ \
-        /*Output: open-drain, maxspeed, Input: floating*/\
-        ENTRYLIST(GPIOA, 5, CRL, 5, OUTPUT, 5) \
-        ENTRYLIST(GPIOA, 6, CRL, 6_0, OUTPUT, 6_2 ) \
-        ENTRYLIST(GPIOA, 7, CRL, 7, OUPUT, 7) \
-        /*Output: Push-pull, maxspeed*/\
-        ENTRYLIST(GPIOA, 3, CRL, 3_2,OUTPUT, 3) \
-        ENTRYLIST(GPIOA, 4, CRL, 4_2,OUTPUT, 4) \
-        ENTRYLIST(GPIOA, 2, CRL, 2_2,OUTPUT, 2) \
+        ENTRYLIST(GPIOA, 10, CRH, INPUTMODE,  FLOATING_INPUT) \
+        ENTRYLIST(GPIOA, 9, CRH, OUTPUTMODE_50MHZ, ALT_OPENDRAIN)\
+        /*SPI1*/ \
+        /*Output: Alternative push-pull, maxspeed*/\
+        ENTRYLIST(GPIOA, 5, CRL, OUTPUTMODE_50MHZ, ALT_PUSHPULL) \
+        ENTRYLIST(GPIOA, 6, CRL, INPUTMODE, FLOATING_INPUT) \
+        ENTRYLIST(GPIOA, 7, CRL, OUTPUTMODE_50MHZ, ALT_PUSHPULL) \
 
+#define PINLIST_B(ENTRYLIST) \
+        /*SPI2*/\
+        /*Output: open-drain, maxspeed*/\
+        /*Intput: floating, maxspeed*/\
+        ENTRYLIST(GPIOB, 13, CRH, INPUTMODE, FLOATING_INPUT) /*Clock pin*/ \
+        ENTRYLIST(GPIOB, 14, CRH, OUTPUTMODE_50MHZ, ALT_PUSHPULL) /*MISO pin*/\
+				ENTRYLIST(GPIOB, 15, CRH, INPUTMODE, FLOATING_INPUT) /*MOSI pin*/\
 
 /*For APB_bus_bit position: 
 #define  RCC_APB2ENR_AFIOEN                  ((uint32_t)0x00000001)         //Alternate Function I/O clock enable 
@@ -41,6 +63,7 @@
         /*GPIO_PORT, AHB_bus, APB_bus, APB_bus_bit_pos, pin_list*/\
         ENTRY_FUNCTION(GPIOC, AHB1, APB2, RCC_APB2ENR_IOPCEN, PINLIST_C) \
         ENTRY_FUNCTION(GPIOA, AHB1, APB2, RCC_APB2ENR_IOPAEN, PINLIST_A) \
+        ENTRY_FUNCTION(GPIOB, AHB1, APB2, RCC_APB2ENR_IOPBEN, PINLIST_B) \
 
 
 #define GPIO_Configure_DELC(GPIO_PORT, NA1, NA2, NA3, NA4) \

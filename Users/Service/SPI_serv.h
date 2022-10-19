@@ -6,5 +6,6 @@
 //This file contains API for users to interact with SPI peripherals
 
 void SPI_Write(const SPI_HANDLES SPI_index, uint8_t* data_u8_array, uint8_t data_length_u8);
-//void SPI_read(SPI_TypeDef* SPI, uint8_t* data_u8_array, uint8_t data_length_u8);
+void SPI_Read(const SPI_HANDLES SPI_index, uint8_t* data_u8_array, uint8_t data_length_u8);
+
 #endif

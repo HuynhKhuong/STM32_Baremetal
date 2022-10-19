@@ -11,17 +11,17 @@
 #include "GPIO.h"
 #include "GPIO_irq_pc.h"
 
-#define PIN_CONFIGURE(GPIO_PORT, pin, Control_Register, bit_value, function, Speed_bit_value) \
+#define PIN_CONFIGURE(GPIO_PORT, pin, Control_Register, MODE, CNF_FUNC) \
         /*Configure pin's function in the register*/\
         /*pin: 0,...15*/\
         /*bit_value: pin, pin_0, pin_1, by default: pin_0, which is the reset value of the register*/\
         /*Speed_bit_value: pin, pin_0, pin_1: by default: pin_2, which is the reset value of the register*/\
         /*Reset bit_value*/\
-        ((GPIO_PORT)->Control_Register) &=  ~(GPIO_##Control_Register##_CNF##pin);\
-        ((GPIO_PORT)->Control_Register) |=  (GPIO_##Control_Register##_CNF##bit_value);\
+        ((GPIO_PORT)->Control_Register) &=  ~(RESET_CNF_BITS(Control_Register, pin));\
+        ((GPIO_PORT)->Control_Register) |=  (CNF_FUNC(Control_Register, pin));\
         /*Reset speed_bit_value*/\
-        ((GPIO_PORT)->Control_Register) &=  ~(GPIO_##Control_Register##_MODE##pin);\
-        ((GPIO_PORT)->Control_Register) |=  (GPIO_##Control_Register##_MODE##Speed_bit_value);\
+        ((GPIO_PORT)->Control_Register) &=  ~(RESET_MODE_BITS(Control_Register, pin));\
+        ((GPIO_PORT)->Control_Register) |=  (MODE(Control_Register, pin));\
 				/*For Input mode, If that pin is configured as pull up/down mode, by default it is pull-down mode*/\
 
 
@@ -49,7 +49,7 @@ GPIO_LIST_CONFIGURE(GPIO_Configuration)
 
 void GPIO_Initialization(void){
   GPIO_LIST_CONFIGURE(GPIO_Configure_FuncCall)
-
+	
   #ifdef EXTI_YES
     /*First to configure IRQ, disable all Interrupts via BASEPRI register
       This register controls the priorities for exception processing

@@ -2,13 +2,14 @@
 #include "main.h"
 #include "GPIO_ctrl.h"
 #include "UART_serv.h"
+#include "Nokia_5110_LCD.h"
 
 /* Users's private macros */
 
 /* Users's private variable*/
 uint8_t DUMMY_TRANSMIT[11] = {'H','E','L','L','O',' ','W','O','R','L','D'};
 uint8_t DUMMY_RECEIVE[11] = {0,0,0,0,0,0,0,0,0,0,0};
-
+NOKIA_5110* my_NOKIA;
 /* Function declarations*/
 
 /*Main function*/
@@ -29,7 +30,9 @@ int main() {
 	
 	/*Users's Application initialization*/
 	GPIO_WritePin(GPIOC, 13, 1);
+	my_NOKIA = NOKIA_5110_ctor(0x20, 0x13);
 	
+	NOKIA_Init(my_NOKIA);
 	
 	while(1){
 		Delay_ms_tick(1000);
