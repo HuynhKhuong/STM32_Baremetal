@@ -1,0 +1,1 @@
+This file is a dummy file used for studying git
