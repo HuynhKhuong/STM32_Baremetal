@@ -1,6 +1,6 @@
 /*
 *   @Author: Huynh Khuong  
-*   @Brief: This is the DIY library built for controlling GPIO of STM32F103
+*   @Brief: This is the DIY library built for controlling GPIO of STM32F407
 *   
 *   This libary is built up from scratch based on CMSIS library. It makes use of registers to manipulate GPIO peripherals
 *   It contains:
@@ -10,33 +10,27 @@
 */
 #include "GPIO.h"
 #include "GPIO_irq_pc.h"
+#include "stm32f407xx.h"
 
-#define PIN_CONFIGURE(GPIO_PORT, pin, Control_Register, MODE, CNF_FUNC) \
+#define PIN_CONFIGURE(GPIO_PORT, pin, DIR, MODE, PUPDR, OSPEED, OT) \
         /*Configure pin's function in the register*/\
-        /*pin: 0,...15*/\
-        /*bit_value: pin, pin_0, pin_1, by default: pin_0, which is the reset value of the register*/\
-        /*Speed_bit_value: pin, pin_0, pin_1: by default: pin_2, which is the reset value of the register*/\
-        /*Reset bit_value*/\
-        ((GPIO_PORT)->Control_Register) &=  ~(RESET_CNF_BITS(Control_Register, pin));\
-        ((GPIO_PORT)->Control_Register) |=  (CNF_FUNC(Control_Register, pin));\
-        /*Reset speed_bit_value*/\
-        ((GPIO_PORT)->Control_Register) &=  ~(RESET_MODE_BITS(Control_Register, pin));\
-        ((GPIO_PORT)->Control_Register) |=  (MODE(Control_Register, pin));\
-				/*For Input mode, If that pin is configured as pull up/down mode, by default it is pull-down mode*/\
+        /*Choose mode*/\
+        ((GPIO_PORT)->MODER) &=  ~(RESET_MODE_BITS(MODER, pin));\
+        ((GPIO_PORT)->MODER) |=  (MODE(MODER, pin));\
+        DIRECT_##DIR(GPIO_PORT,PUPDR, OSPEED, OT, pin) \
 
-
-#define GPIO_Configuration(GPIO_PORT, AHB_bus, APB_bus, APB_bus_bit_pos, pin_list) \
-        /*Procedure: 1. Clock enable for AHB, 2. Clock enable for each port, 3. Pin configuration*/\
+#define GPIO_Configuration(GPIO_PORT, AHB_bus, pin_list) \
+        /*Procedure: 1. Clock enable for AHB, 2. Pin configuration*/\
         static void GPIO_configure_##GPIO_PORT(void){\
             /*Configure its APB_bus*/\
-            RCC->APB_bus##ENR |= APB_bus_bit_pos;  \
+            RCC->AHB_bus##ENR |= RCC_##AHB_bus##ENR_##GPIO_PORT##EN;  \
             /*Configure its Output Pin*/\
             pin_list(PIN_CONFIGURE) \
         }\
 
 uint8_t signal = 0;
 
-/*  Function's definitions*/
+/* Function's definitions*/
 /* Bitwise Operation on Register */ 
 /* Convert bit position (uint8_t value) to the real position in the register*/
 #define GPOutput_bit_write(GPIO_Port, bit)  SET_BIT(GPIO_Port, bit) 
@@ -46,10 +40,13 @@ uint8_t signal = 0;
 #define GPPort_pinread(GPIO_Port, bit_pos) (((GPIO_Port) & (bit_position_val_tbl[bit_pos])) >> bit_pos)
 
 GPIO_LIST_CONFIGURE(GPIO_Configuration)
+				
 
+				
 void GPIO_Initialization(void){
   GPIO_LIST_CONFIGURE(GPIO_Configure_FuncCall)
-	
+
+
   #ifdef EXTI_YES
     /*First to configure IRQ, disable all Interrupts via BASEPRI register
       This register controls the priorities for exception processing

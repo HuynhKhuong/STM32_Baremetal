@@ -1,5 +1,5 @@
 #include "GPIO_irq_pc.h"
-#include "stm32f10x.h"
+#include "stm32f407xx.h"
 /*
    Define Interrupt handlers declared by system right here
 */
@@ -45,5 +45,5 @@
 
 	
 /*Functions definition*/
-EXTI_LIST_CONFIGURE(GPIO_EX_Interrupt_configuration)
-EXTI_LIST_CONFIGURE(INTERRUPT_HANDLE_DEF)
+//EXTI_LIST_CONFIGURE(GPIO_EX_Interrupt_configuration)
+//EXTI_LIST_CONFIGURE(INTERRUPT_HANDLE_DEF)

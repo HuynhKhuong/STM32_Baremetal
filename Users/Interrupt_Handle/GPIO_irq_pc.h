@@ -1,12 +1,12 @@
 #ifndef __GPIO_IRQ_PC_H__
 #define __GPIO_IRQ_PC_H__
 
-#include "stm32f10x.h"
+#include "stm32f407xx.h"
 /*
   Base code for handling interrupt under platform, application would only make use functions from GPIO_irq.c 
 */
 
-#define EXTI_YES
+#define EXTI_NO
 
 /*-------------------------------------------------------------------------------------------------------*/
 /*This is the section for External Interrupt configuration
@@ -38,8 +38,8 @@
         EX_Interrupt_configurtation_##GPIO_PORT();
 
 /*Functions' declaration*/
-EXTI_LIST_CONFIGURE(GPIO_EX_Interrupt_DELC)
+//EXTI_LIST_CONFIGURE(GPIO_EX_Interrupt_DELC)
     
-void EXTI_A_0_IRQ(void); //User-defined func
+//void EXTI_A_0_IRQ(void); //User-defined func
 
 #endif
