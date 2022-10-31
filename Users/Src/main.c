@@ -7,9 +7,9 @@
 /* Users's private macros */
 
 /* Users's private variable*/
-//uint8_t DUMMY_TRANSMIT[11] = {'H','E','L','L','O',' ','W','O','R','L','D'};
-//uint8_t DUMMY_RECEIVE[11] = {0,0,0,0,0,0,0,0,0,0,0};
-//NOKIA_5110* my_NOKIA;
+  uint8_t inputpin_u8 = 0; 
+  uint8_t index_u8 = 0;
+  uint8_t pin_write_u8 = 0;
 /* Function declarations*/
 
 /*Main function*/
@@ -25,27 +25,26 @@ int main() {
 //	UART_Receive(USART1, &DUMMY_RECEIVE[0], 11);
 	
   /* User's Application */
-  // uint8_t inputpin_u8 = 0; 
-	// uint8_t output_state = 0;
-	
+
 	/*Users's Application initialization*/
-//	GPIO_WritePin(GPIOC, 13, 1);
-//	my_NOKIA = NOKIA_5110_ctor(0x20, 0x13);
 
-//	NOKIA_Init(my_NOKIA);
-    GPIO_WritePin(GPIOD, 12, 1);
-    GPIO_WritePin(GPIOD, 13, 1);
-    GPIO_WritePin(GPIOD, 14, 1);
-    GPIO_WritePin(GPIOD, 15, 1);
+  GPIO_WritePin(GPIOD, 12, 1);
+  GPIO_WritePin(GPIOD, 13, 1);
+  GPIO_WritePin(GPIOD, 14, 1);
+  GPIO_WritePin(GPIOD, 15, 1);
+
 	while(1){
-		//Delay_ms_tick(1000);
-
-//    Delay_ms_tick(1000);
-    GPIO_WritePin(GPIOD, 12, 0);
-    GPIO_WritePin(GPIOD, 13, 0);
-    GPIO_WritePin(GPIOD, 14, 0);
-    GPIO_WritePin(GPIOD, 15, 0);
-
+		inputpin_u8 = GPIO_ReadPin(GPIOA,0);
+    
+    if(inputpin_u8 != 0){
+      index_u8++;
+      index_u8 &= 0x03;
+    }
+    
+    for(int i = 0; i < 4; i++){
+      if(i != index_u8) GPIO_WritePin(GPIOD, (uint8_t)(i+12),0);
+      else GPIO_WritePin(GPIOD, (uint8_t)(i+12),1);
+    }
 //		UART_Transmitt(USART1, &DUMMY_TRANSMIT[0], 11);
   }
   return 0;

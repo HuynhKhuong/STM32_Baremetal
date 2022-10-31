@@ -37,7 +37,7 @@
         (GPIO_PORT)->OTYPER   |= OT(OTYPER, pin) ;\
 
 #define DIRECT_IN(GPIO_PORT, PUPD, NA1, NA2, pin) \
-        (GPIO_PORT)->PUPDR   |= PUPDR(OTYPER, pin) ;\
+        (GPIO_PORT)->PUPDR   |= PUPD(PUPDR, pin) ;\
 
 /*-------------------------------------------------------------------------------------------------------*/
 /*List declaration*/
@@ -54,15 +54,8 @@
         ENTRYLIST(GPIOC, 13, CRH, OUTPUTMODE_50MHZ,OUTPUT_PUSHPULL) 
 
 #define PINLIST_A(ENTRYLIST) \
-        /*GPIO_PORT, pin, Control_Register, MODE, CNF*/\
-        /*UART, output open-drain, max speed, input, floating*/ \
-        ENTRYLIST(GPIOA, 10, CRH, INPUTMODE,  FLOATING_INPUT) \
-        ENTRYLIST(GPIOA, 9, CRH, OUTPUTMODE_50MHZ, ALT_OPENDRAIN)\
-        /*SPI1*/ \
-        /*Output: Alternative push-pull, maxspeed*/\
-        ENTRYLIST(GPIOA, 5, CRL, OUTPUTMODE_50MHZ, ALT_PUSHPULL) \
-        ENTRYLIST(GPIOA, 6, CRL, INPUTMODE, FLOATING_INPUT) \
-        ENTRYLIST(GPIOA, 7, CRL, OUTPUTMODE_50MHZ, ALT_PUSHPULL) \
+        /*GPIO_PORT, pin, DIR, MODE, PUPDR, OSPEED, OT */ \
+        ENTRYLIST(GPIOA, 0, IN, INPUT, FLOATING, NA1, NA2) \
 
 #define PINLIST_B(ENTRYLIST) \
         /*SPI2*/\
@@ -76,6 +69,7 @@
 #define GPIO_LIST_CONFIGURE(ENTRY_FUNCTION) \
         /*GPIO_PORT, AHB_bus, pin_list*/\
         ENTRY_FUNCTION(GPIOD, AHB1, PINLIST_D) \
+        ENTRY_FUNCTION(GPIOA, AHB1, PINLIST_A) \
 
 
 #define GPIO_Configure_DELC(GPIO_PORT, NA1, NA2) \
