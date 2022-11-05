@@ -55,11 +55,12 @@ void GPIO_Initialization(void){
       When it is set to a nonzero value, it prevents the activation of all exceptions with the same or lower priority level as the 
       BASEPRI value
     */
-    //__set_BASEPRI((uint32_t)(1<<4)); //At the beginning, no additional Exceptions are configured, therefore the IRQs are from the sytem request 
+    //At the beginning, no additional Exceptions are configured, therefore the IRQs are from the sytem request, their priorities are fixed.
+		//They can't be changed
     __set_PRIMASK(1);
     EXTI_LIST_CONFIGURE(GPIO_EX_Interrupt_FUNC_Call)
 
-    //__set_BASEPRI((uint32_t)(0));
+    //_
     __set_PRIMASK(0);
 
   #endif 

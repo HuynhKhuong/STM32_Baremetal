@@ -6,6 +6,6 @@
 */
 
 
-void EXTI_A_0_IRQ(void){ //User-defined func
+void EXTI_GPIOA_0_IRQ(void){ //User-defined func
   signal = (signal == 1)?0:1;
 }
