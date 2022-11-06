@@ -8,10 +8,10 @@
 */
 
 
-#include "stm32f10x.h"
+#include "stm32f407xx.h"
 
 /*
-  Arm Cortex M3 CPU has its own 24-bit timer which is called System_timer/systick
+  Arm Cortex M4 CPU has its own 24-bit timer which is called System_timer/systick
   That counts down from the reload value to zero, reloads the value of SYST_RVR register on the next clock edge
   This device lib provides API to access to systick 
 
@@ -21,7 +21,7 @@
   - SYST_CVR
   - SYST_CALIB
 
-  For more info: Read Arm Cortex M3 manual reference
+  For more info: Read Arm Cortex M4 manual reference
   
   Usage hints and tips: 
   - The correct initialization sequence for the Systick counter is: 
@@ -29,9 +29,17 @@
     + Clear current value
     + Program control and Status register
   
-  To configure its source clock, you have to take more time investigating these register:
-  - RCC_CR: Which clock source is enable/ready
-  - RCC_CFGR: Which clock source is used as SYSCLOCK; its multiplying parameters as well as other functions
+  To configure its source clock, Remember the rules:
+		- After a system reset, the HSI oscillator is selected as the system clock. When a clock source
+		is used directly or through PLL as the system clock, it is not possible to stop it.
+		
+		- A switch from one clock source to another occurs only if the target clock source is ready
+			(clock stable after startup delay or PLL locked). 
+			
+		- If a clock source that is not yet ready is selected, the switch occurs when the clock source is ready. 
+		
+		- Status bits in the RCC clock control register (RCC_CR) indicate which clock(s) is (are) ready and which 
+		clock is currently used as the system clock.
 
   In application: Clock source is used as HSE -> PREDIV1 (= 1) -> PLL_MUL (= 9) = 8*9 = 72MHz
 
